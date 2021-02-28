@@ -41,6 +41,9 @@ public class Issue extends BaseTimeEntity {
     @OneToMany(mappedBy = "issue")
     private List<IssueLabel> issueLabels;
 
+    @OneToMany(mappedBy = "issue")
+    private List<Assignee> assignees;
+
     private LocalDateTime deletedAt;
 
     @Builder
