@@ -44,6 +44,9 @@ public class Issue extends BaseTimeEntity {
     @OneToMany(mappedBy = "issue")
     private List<Assignee> assignees;
 
+    @OneToMany(mappedBy = "issue")
+    private List<Comment> comments;
+
     private LocalDateTime deletedAt;
 
     @Builder
