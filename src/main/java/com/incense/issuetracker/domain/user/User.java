@@ -2,6 +2,7 @@ package com.incense.issuetracker.domain.user;
 
 import com.incense.issuetracker.domain.BaseTimeEntity;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -29,4 +30,11 @@ public class User extends BaseTimeEntity {
 
     private LocalDateTime deletedAt;
 
+    @Builder
+    public User(String name, String password, String profileImage, SNS sns_type) {
+        this.name = name;
+        this.password = password;
+        this.profileImage = profileImage;
+        this.sns_type = sns_type;
+    }
 }
