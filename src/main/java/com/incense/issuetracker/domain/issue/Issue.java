@@ -28,7 +28,7 @@ public class Issue extends BaseTimeEntity {
 
     private String content;
 
-    private char isOpened;
+    private String isOpened;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "user_id")
@@ -53,6 +53,6 @@ public class Issue extends BaseTimeEntity {
     public Issue(String title, String content) {
         this.title = title;
         this.content = content;
-        this.isOpened = 'y';
+        this.isOpened = "y";
     }
 }
