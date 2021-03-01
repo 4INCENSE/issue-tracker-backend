@@ -27,7 +27,7 @@ public class Milestone {
 
     private int closedIssueCount;
 
-    private char isOpened;
+    private String isOpened;
 
     @Builder
     public Milestone(String title, String description, String dueBy) {
@@ -36,6 +36,6 @@ public class Milestone {
         this.dueBy = dueBy;
         this.openIssueCount = 0;
         this.closedIssueCount = 0;
-        this.isOpened = 'y';
+        this.isOpened = "y";
     }
 }
