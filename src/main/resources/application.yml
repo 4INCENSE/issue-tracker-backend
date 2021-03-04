@@ -25,11 +25,13 @@ spring:
     activate:
       on-profile: local
   datasource:
-    url: jdbc:mysql://localhost:3306/issuetracker?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    initialization-mode: always
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: test
-    password: test
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
 
 ---
 
