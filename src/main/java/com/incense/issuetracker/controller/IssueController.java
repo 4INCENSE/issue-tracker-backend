@@ -1,7 +1,7 @@
 package com.incense.issuetracker.controller;
 
 import com.incense.issuetracker.domain.issue.Issue;
-import com.incense.issuetracker.dto.issue.response.IssueResponseDto;
+import com.incense.issuetracker.dto.issue.response.IssueListResponseDto;
 import com.incense.issuetracker.service.IssueService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +20,8 @@ public class IssueController {
     private final IssueService issueService;
 
     @GetMapping
-    public ResponseEntity<List<IssueResponseDto>> list() {
+    public ResponseEntity<List<IssueListResponseDto>> list() {
         List<Issue> issues = issueService.findIssues();
-        return ResponseEntity.ok(issues.stream().map(issue -> IssueResponseDto.from(issue)).collect(Collectors.toList()));
+        return ResponseEntity.ok(issues.stream().map(issue -> IssueListResponseDto.from(issue)).collect(Collectors.toList()));
     }
 }
