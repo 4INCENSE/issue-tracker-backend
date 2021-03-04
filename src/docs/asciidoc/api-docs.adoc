@@ -1,0 +1,15 @@
+= 이슈트래커 API 문서📃
+:toc: left
+:sectnums:
+
+== 이슈 API
+
+=== 이슈 리스트 가져오기 (배포 전)
+- request
+include::{snippets}/issue-controller-test/이슈리스트_가져오기/http-request.adoc[]
+
+- response 200
+include::{snippets}/issue-controller-test/이슈리스트_가져오기/response-body.adoc[]
+
+-  Response Fields
+include::{snippets}/issue-controller-test/이슈리스트_가져오기/response-fields.adoc[]
