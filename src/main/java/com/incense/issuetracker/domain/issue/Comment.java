@@ -23,7 +23,7 @@ public class Comment extends BaseTimeEntity {
 
     private String content;
 
-    private char isOwner;
+    private String isOwner;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "issue_id")
