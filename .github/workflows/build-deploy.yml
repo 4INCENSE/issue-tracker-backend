@@ -33,15 +33,15 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Change deploy RDS url
-        run: sed -i "43s/AWS_RDS/$AWS_RDS/" /home/runner/work/geha-sajang-backend/geha-sajang-backend/src/main/resources/application.yml
+        run: sed -i "43s/AWS_RDS/$AWS_RDS/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application.yml
         shell: bash
 
       - name: Change deploy RDS username
-        run: sed -i "46s/AWS_RDS_USER_NAME/$AWS_RDS_USER_NAME/" /home/runner/work/geha-sajang-backend/geha-sajang-backend/src/main/resources/application.yml
+        run: sed -i "46s/AWS_RDS_USER_NAME/$AWS_RDS_USER_NAME/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application.yml
         shell: bash
 
       - name: Change deploy RDS password
-        run: sed -i "47s/AWS_RDS_USER_PASSWORD/$AWS_RDS_USER_PASSWORD/" /home/runner/work/geha-sajang-backend/geha-sajang-backend/src/main/resources/application.yml
+        run: sed -i "47s/AWS_RDS_USER_PASSWORD/$AWS_RDS_USER_PASSWORD/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application.yml
         shell: bash
 
       - name: Grant excute permission for gradlew
@@ -75,4 +75,4 @@ jobs:
         run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$S3_BUCKET_NAME/$PROJECT_NAME/$GITHUB_SHA.zip
 
       - name: Code Deploy
-        run: aws deploy create-deployment --application-name geha-deploy --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name develop --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
+        run: aws deploy create-deployment --application-name issuetracker-deploy --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name develop --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
