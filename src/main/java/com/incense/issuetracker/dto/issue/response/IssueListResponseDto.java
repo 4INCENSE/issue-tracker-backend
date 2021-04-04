@@ -31,7 +31,7 @@ public class IssueListResponseDto {
                 .title(issue.getTitle())
                 .isOpened(issue.getIsOpened())
                 .date(issue.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy:MM:dd")))
-                .writerName(issue.getWriter().getName())
+                .writerName(issue.getWriter().getEmail())
                 .writerImage(issue.getWriter().getProfileImage())
                 .milestoneTitle(issue.getMilestone().getTitle())
                 .commentCount(issue.getComments().size())

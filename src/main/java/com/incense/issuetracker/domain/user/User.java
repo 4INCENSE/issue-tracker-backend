@@ -19,22 +19,22 @@ public class User extends BaseTimeEntity {
     @Column(name = "user_id")
     private Long id;
 
-    private String name;
+    private String email;
 
     private String password;
 
     private String profileImage;
 
     @Enumerated(EnumType.STRING)
-    private SNS sns_type;
+    private AuthenticationType authType;
 
     private LocalDateTime deletedAt;
 
     @Builder
-    public User(String name, String password, String profileImage, SNS sns_type) {
-        this.name = name;
+    public User(String email, String password, String profileImage, AuthenticationType authType) {
+        this.email = email;
         this.password = password;
         this.profileImage = profileImage;
-        this.sns_type = sns_type;
+        this.authType = authType;
     }
 }
