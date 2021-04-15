@@ -2,6 +2,30 @@
 :toc: left
 :sectnums:
 
+== 로그인 API
+현재 로그인이 성공하면 LOGIN_TEST 쿠키를 반환합니다.
+
+추후에 jwt가 추가될 예정입니다.
+
+=== OAuth2
+==== google
+구글의 경우 내부 구현은 됐지만 구글의 정책 변경으로 배포 환경에서 사용할 수 없어 API를 제공하지 않습니다.
+
+==== naver
+- request
+
+  http://3.36.247.23:8080/oauth2/authorization/naver
+
+==== kakao
+- request
+
+  http://3.36.247.23:8080/oauth2/authorization/kakao
+
+==== 공통 응답
+- response
+
+    현재 로그인이 성공하면 LOGIN_TEST 쿠키를 반환합니다.
+
 == 이슈 API
 
 === 이슈 리스트 가져오기 (배포 전)
