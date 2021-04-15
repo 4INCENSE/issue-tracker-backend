@@ -21,20 +21,37 @@ public class User extends BaseTimeEntity {
 
     private String name;
 
+    private String email;
+
     private String password;
 
     private String profileImage;
 
     @Enumerated(EnumType.STRING)
-    private SNS sns_type;
+    private AuthenticationType authType;
 
     private LocalDateTime deletedAt;
 
     @Builder
-    public User(String name, String password, String profileImage, SNS sns_type) {
+    public User(String name, String email, String password, String profileImage, AuthenticationType authType) {
         this.name = name;
+        this.email = email;
         this.password = password;
         this.profileImage = profileImage;
-        this.sns_type = sns_type;
+        this.authType = authType;
+    }
+
+    public User update(String name, String profile) {
+        this.profileImage = profile;
+        this.name = name;
+
+        return this;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if (password == null) {
+            password = "";
+        }
     }
 }
