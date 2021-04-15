@@ -3,12 +3,17 @@ package com.incense.issuetracker.controller;
 import com.incense.issuetracker.common.CommonString;
 import com.incense.issuetracker.dto.issue.response.IssueListResponseDto;
 import com.incense.issuetracker.dto.label.response.LabelResponseDto;
+import com.incense.issuetracker.security.CustomAccessDeniedHandler;
+import com.incense.issuetracker.security.CustomAuthenticationEntryPoint;
+import com.incense.issuetracker.security.oauth.CustomOauth2UserService;
+import com.incense.issuetracker.security.oauth.OAuth2LoginSuccessHandler;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -33,7 +38,20 @@ class IssueControllerTest {
     @MockBean
     private IssueController issueController;
 
+    @MockBean
+    private CustomOauth2UserService oAuth2UserService;
+
+    @MockBean
+    private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
+
+    @MockBean
+    private CustomAccessDeniedHandler customAccessDeniedHandler;
+
+    @MockBean
+    private CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
+
     @Test
+    @WithMockUser
     void 이슈리스트_가져오기() throws Exception {
         //given
         List<LabelResponseDto> labels1 = Arrays.asList(

@@ -11,6 +11,12 @@ env:
   AWS_RDS: ${{ secrets.AWS_RDS }}
   AWS_RDS_USER_NAME: ${{ secrets.AWS_RDS_USER_NAME }}
   AWS_RDS_USER_PASSWORD:  ${{ secrets.AWS_RDS_USER_PASSWORD }}
+  G_CLIENT_ID: ${{ secrets.G_CLIENT_ID }}
+  G_CLIENT_SECRET: ${{ secrets.G_CLIENT_SECRET }}
+  N_CLIENT_ID: ${{ secrets.N_CLIENT_ID }}
+  N_CLIENT_SECRET: ${{ secrets.N_CLIENT_SECRET }}
+  K_CLIENT_ID: ${{ secrets.K_CLIENT_ID }}
+  K_CLIENT_SECRET: ${{ secrets.K_CLIENT_SECRET }}
 
 jobs:
   build:
@@ -32,16 +38,40 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Change deploy RDS url
-        run: sed -i "43s/AWS_RDS/$AWS_RDS/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application.yml
-        shell: bash
-
       - name: Change deploy RDS username
-        run: sed -i "46s/AWS_RDS_USER_NAME/$AWS_RDS_USER_NAME/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application.yml
+        run: sed -i "s/AWS_RDS_USER_NAME/$AWS_RDS_USER_NAME/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application.yml
         shell: bash
 
       - name: Change deploy RDS password
-        run: sed -i "47s/AWS_RDS_USER_PASSWORD/$AWS_RDS_USER_PASSWORD/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application.yml
+        run: sed -i "s/AWS_RDS_USER_PASSWORD/$AWS_RDS_USER_PASSWORD/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application.yml
+        shell: bash
+
+      - name: Change deploy RDS url
+        run: sed -i "s/AWS_RDS/$AWS_RDS/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application.yml
+        shell: bash
+
+      - name: Change google client id
+        run: sed -i "s/G_CLIENT_ID/$G_CLIENT_ID/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application-oauth.yml
+        shell: bash
+
+      - name: Change google client secret
+        run: sed -i "s/G_CLIENT_SECRET/$G_CLIENT_SECRET/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application-oauth.yml
+        shell: bash
+
+      - name: Change naver client id
+        run: sed -i "s/N_CLIENT_ID/$N_CLIENT_ID/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application-oauth.yml
+        shell: bash
+
+      - name: Change naver client secret
+        run: sed -i "s/N_CLIENT_SECRET/$N_CLIENT_SECRET/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application-oauth.yml
+        shell: bash
+
+      - name: Change kakao client id
+        run: sed -i "s/K_CLIENT_ID/$K_CLIENT_ID/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application-oauth.yml
+        shell: bash
+
+      - name: Change kakao client secret
+        run: sed -i "s/K_CLIENT_SECRET/$K_CLIENT_SECRET/" /home/runner/work/issue-tracker-backend/issue-tracker-backend/src/main/resources/application-oauth.yml
         shell: bash
 
       - name: Grant excute permission for gradlew
